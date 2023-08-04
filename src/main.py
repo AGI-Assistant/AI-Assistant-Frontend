@@ -21,7 +21,6 @@ def add_message(string_value: str,
 
 
 def send_message():
-
     # Add user message to chat history and rerun
     add_message(st.session_state.message, true_if_user=True)
 
@@ -30,6 +29,7 @@ def send_message():
         # Add API call here!
         time.sleep(1)
         add_message("This works!", False)
+
 
 if __name__ == "__main__":
 
@@ -51,6 +51,6 @@ if __name__ == "__main__":
     # Handle user input
     with input_container.container():
         st.session_state.message = st.text_input("Type your message here...",
-                                                 on_change=add_message,
+                                                 on_change=send_message,
                                                  key="message_input")
         st.button("Send", on_click=send_message)
