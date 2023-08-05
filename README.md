@@ -6,17 +6,19 @@
 - [References](#references)
 
 ## Installation
-Describe the installation process here. Include any pre-requisites, required libraries,
-and how to get the development environment running.
+The frontend is currently written in [Python 3.11](https://docs.python.org/3/) using the [Streamlit](https://docs.streamlit.io/library/cheatsheet) library.
 
-### Example command line instructions
-```
-bash
-pip install -r requirements.txt
-```
+### Requirements
+Python >= 3.10 (Might also work on a lower version not sure) <br>
+```pip install -r requirements.txt```
 
 ## Usage
-...
+Streamlit should handle everything for you so just navigate to the folder where the main is located <br>
+and use ```streamlit run main.py``` to start the application. <br>
+
+Don’t forget to set up the .env file! <br>
+
+If you’re writing any code, please stick to [PEP 8](https://peps.python.org/pep-0008/) or otherwise this will become an even bigger mess…
 
 ## Structure
 ### AGI-Assistant-Backend
