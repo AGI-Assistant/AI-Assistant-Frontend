@@ -9,3 +9,7 @@ def layout():
 
     # Set page title
     st.title("Your AI Assistant")
+
+    # Initialize chat history
+    if "history" not in st.session_state:
+        st.session_state.history = []

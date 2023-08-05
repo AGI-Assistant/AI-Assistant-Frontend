@@ -19,11 +19,9 @@ if __name__ == "__main__":
     temp_message = input_container.text_input("Type your message here...")
 
     if input_container.button("Send"):
-        msgr.add_message(temp_message, True)
+        msgr.add(temp_message, True)
 
-    # Initialize chat history and display messages if they exist
-    if "history" not in st.session_state:
-        st.session_state.history = []
-    else:
+    # Display messages if they exist
+    if "history" in st.session_state:
         with message_container.container():
-            msgr.render_messages(st.session_state['history'])
+            msgr.render(st.session_state['history'])
