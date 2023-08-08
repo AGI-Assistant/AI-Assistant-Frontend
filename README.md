@@ -2,7 +2,10 @@
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
-- [Project Structure](#structure)
+- [Project Structure](#project-structure)
+  - [AGI-Assistant-Backend](#agi-assistant-backend)
+  - [AGI-Assistant-Model](#agi-assistant-model)
+  - [AGI-Assistant-Frontend](#agi-assistant-frontend)
 - [References](#references)
 
 ## Installation
@@ -20,7 +23,7 @@ Don’t forget to set up the .env file! <br>
 
 If you’re writing any code, please stick to [PEP 8](https://peps.python.org/pep-0008/) or otherwise this will become an even bigger mess…
 
-## Structure
+## Project Structure
 ### AGI-Assistant-Backend
 This repository handles the data traffic and connects all the different components. <br>
 ### AGI-Assistant-Frontend
