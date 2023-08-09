@@ -23,7 +23,7 @@ def render(conversation: list[dict]):
 def send(contents: str):
     # Show a spinner during the api call
     with st.spinner(text='Sending message...'):
-        response = post.user_message(contents, st.session_state.conversation_id)
+        response = post.send_message(contents, st.session_state.conversation_id)
         if response.status_code == 201:
             st.success("Message sent!")
             # response.json()['message_id']

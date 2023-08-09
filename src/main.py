@@ -9,7 +9,6 @@ import interface as msgr
 from interface import init
 
 if __name__ == "__main__":
-
     # Initialize layout and containers
     init.layout()
     message_container = st.container()
