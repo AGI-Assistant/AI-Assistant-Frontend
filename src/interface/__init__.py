@@ -1,5 +1,5 @@
 """
-This module holds the functions for running or populating interface.
+This module holds functions for running or populating interface.
 """
 
 from interface.messages import *

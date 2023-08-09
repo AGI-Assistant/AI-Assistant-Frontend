@@ -1,12 +1,23 @@
 """
-This package holds all APIs needed to run the frontend chat interface.
+This module holds all post requests.
 """
 import requests as rq
+import streamlit as st
 
 
-def send_message(contents: str, conversation_id: str, api_key: str = None) -> rq.models.Response:
+# Send message
+def send_message(contents: str) -> rq.models.Response:
+    """
+    This function sends a message to the API.
+
+    Args:
+        contents (str): The content of the message.
+
+    Returns:
+        requests.models.Response: A request object, containing the response.
+    """
     return rq.post(
-        url="Link to API".format(),
-        json={'conversationID': conversation_id,
-              'message': contents},
-        headers={"Content-Type": "application/json", 'API-Key': api_key})
+        url=st.session_state['api_url'] + '/user/send',
+        data=contents,
+        headers={'conversationId': st.session_state['api_conversation_id'],
+                 'apiKey': st.session_state['api_key']})
