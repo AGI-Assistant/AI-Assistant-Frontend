@@ -25,7 +25,8 @@ if __name__ == "__main__":
     temp_message = input_container.text_input("Type your message here...")
 
     if input_container.button("Send"):
-        msgr.add(temp_message, True)
+        with st.spinner(text='Sending message...'):
+            msgr.send_and_process(temp_message)
 
     # Display messages if they exist
     if "history" in st.session_state:
