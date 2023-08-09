@@ -1,3 +1,3 @@
 """
-This package holds all APIs needed to run the frontend chat interface.
+This package holds all API methods needed to run the frontend chat interface.
 """

@@ -1,5 +1,8 @@
 """
-Main file for running the chat app.
+This is the main function for running the chat interface.
+It has to be executed with streamlit run main.py to start the application.
+
+https://github.com/Knaeckebrothero/AGI-Assistant-Frontend
 """
 import os
 import streamlit as st
@@ -7,7 +10,7 @@ from dotenv import load_dotenv
 import interface as msgr
 from interface import init
 
-# The main function
+# Main function
 if __name__ == "__main__":
     # Load environment variables
     load_dotenv()
