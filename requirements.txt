@@ -1,0 +1,4 @@
+streamlit~=1.23.1
+streamlit_chat
+requests~=2.28.2
+python-dotenv~=1.0.0
