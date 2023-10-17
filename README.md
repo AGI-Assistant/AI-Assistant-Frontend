@@ -1,15 +1,15 @@
-# AGI Assistant
+# AI Assistant
 
 ## Project Structure
-### AGI-Assistant-Backend
+### AI-Assistant-Backend
 This repository holds the core application and connects all the different components.<br>
-https://github.com/Knaeckebrothero/AGI-Assistant-Backend <br>
-### AGI-Assistant-Model
+https://github.com/Knaeckebrothero/AI-Assistant-Backend <br>
+### AI-Assistant-Model
 This repository holds everything required to run the machine learning model.<br>
-https://github.com/Knaeckebrothero/AGI-Assistant-Model <br>
-### AGI-Assistant-Frontend
+https://github.com/Knaeckebrothero/AI-Assistant-Model <br>
+### AI-Assistant-Frontend
 This repository holds everything required to run the frontend of the application.<br>
-https://github.com/Knaeckebrothero/AGI-Assistant-Frontend <br>
+https://github.com/Knaeckebrothero/AI-Assistant-Frontend <br>
 
 ![Frontend](https://github.com/Knaeckebrothero/AGI-Assistant-Frontend/assets/104355357/83ef6e2c-b1d0-4f81-806d-bdbbc0963841)
 
