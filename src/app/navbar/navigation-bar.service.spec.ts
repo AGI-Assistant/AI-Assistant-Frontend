@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { NavigationBarService } from './navigation-bar.service';
 
 describe('NavigationBarService', () => {

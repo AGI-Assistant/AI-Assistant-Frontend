@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { PollingService } from '../polling/polling.service';
 import { Subscription } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
+import { NavigationBarService } from '../navbar/navigation-bar.service';
 
 // Message interface
 interface ChatResponse {
@@ -18,7 +19,11 @@ interface ChatResponse {
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit, OnDestroy {
-  constructor(private http: HttpClient, private pollingService: PollingService) { }
+  constructor(private http: HttpClient, private pollingService: PollingService, private navService: NavigationBarService) { }
+  
+  toggleNavbar() {
+    this.navService.toggleSidenav();
+  }
 
   // Variable initialization
   backendUrl: string = 'http://127.0.0.1:8000/api/'

@@ -5,9 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Navigation bar imports
-import { NavigationBarComponent } from './navbar/navigation-bar/navigation-bar.component';
+import { NavigationBarComponent } from './navbar/navigation-bar.component';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule, Routes } from '@angular/router';
 
 // Polling imports
 import { HttpClientModule } from '@angular/common/http';
@@ -21,6 +22,13 @@ import { FormsModule } from '@angular/forms';
 
 // Landing page imports
 import { LandingpageComponent } from './landingpage/landingpage.component';
+
+// Routes
+const routes: Routes = [
+  { path: '', component: LandingpageComponent },
+  { path: 'chat', component: ChatComponent }
+  // ... other routes
+];
 
 @NgModule({
   declarations: [
@@ -39,7 +47,8 @@ import { LandingpageComponent } from './landingpage/landingpage.component';
     MatInputModule,
     MatButtonModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

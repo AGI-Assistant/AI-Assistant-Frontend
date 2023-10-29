@@ -1,4 +1,5 @@
 <div class="chat-container">
+  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" (click)="toggleNavbar()"></mat-icon>
   <div class="message-window">
     <app-message *ngFor="let message of messages" [message]="message"></app-message>
   </div>  

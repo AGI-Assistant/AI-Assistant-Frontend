@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationBarService } from '../navbar/navigation-bar/navigation-bar.service';
+import { NavigationBarService } from '../navbar/navigation-bar.service';
 
 
 @Component({
