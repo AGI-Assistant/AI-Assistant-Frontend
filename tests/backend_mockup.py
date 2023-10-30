@@ -1,4 +1,5 @@
 from fastapi import FastAPI, WebSocket
+from fastapi.responses import JSONResponse
 from datetime import datetime
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -26,7 +27,13 @@ async def websocket_endpoint(websocket: WebSocket):
         data = await websocket.receive_text()
         await websocket.send_text(f"Echo: {data}")
 
-@app.get("/api/chat/")
+@app.get('/api/get/polling')
+async def polling():
+   content = {'text': 'Hello World', 'isUser': False, 'time': int(datetime.now().timestamp())}
+   print('polling...')
+   return JSONResponse(content=content, status_code=204)
+
+@app.get("/api/get/messages")
 async def read_chat(message: dict):
     # Generate a response
     answer = f"Your {i} mock answer..."  # Replace with your logic
@@ -35,3 +42,4 @@ async def read_chat(message: dict):
     return {'text': answer, 'isUser': False, 'time': int(datetime.now().timestamp())}
 
 i = 0
+

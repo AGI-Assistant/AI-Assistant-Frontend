@@ -6,8 +6,8 @@
   <div class="input-container">
     <mat-form-field>
       <mat-label>Type your message</mat-label>
-      <input matInput [(ngModel)]="newMessage" placeholder="Type your message..." (keydown.enter)="sendMessage()">
+      <input matInput [(ngModel)]="newMessage" placeholder="Type your message..." (keydown.enter)="postMessage()">
     </mat-form-field>          
-    <button mat-raised-button color="primary" (click)="sendMessage()">Send</button>
+    <button mat-raised-button color="primary" (click)="postMessage()">Send</button>
   </div>
 </div>

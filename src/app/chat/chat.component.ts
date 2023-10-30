@@ -6,7 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { NavigationBarService } from '../navbar/navigation-bar.service';
 
 // Message interface
-interface ChatResponse {
+interface MessageDict {
   text: string,
   isUser: boolean,
   time: Date
@@ -19,7 +19,9 @@ interface ChatResponse {
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit, OnDestroy {
-  constructor(private http: HttpClient, private pollingService: PollingService, private navService: NavigationBarService) { }
+  constructor(private http: HttpClient, private pollingService: PollingService, private navService: NavigationBarService) { 
+    this.getChatHistory('0');
+  }
   
   toggleNavbar() {
     this.navService.toggleSidenav();
@@ -28,7 +30,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   // Variable initialization
   backendUrl: string = 'http://127.0.0.1:8000/api/'
   newMessage: string = '';
-  messages: ChatResponse[] = [];
+  messages: MessageDict[] = [];
   private pollingSubscription!: Subscription;
 
   // Subscribes to the polling service, to recive new messages
@@ -50,17 +52,14 @@ export class ChatComponent implements OnInit, OnDestroy {
   // Check if the polling service update contains new messages
   checkForNewMessages(newInfo: any): void {
     if (newInfo && newInfo.messageID) {
-      const messageIDs = newInfo.messageID;
-      // Now messageIDs is an array of the new message IDs
-      // You can process these IDs as needed
-      // For example, you could fetch the full message data for these IDs from the server
+      this.getMessages(newInfo.messageID);
     }
   }
 
   // Sends a request to the server to get a message and add it to the message array
-  getMessage() {
-    const headers = new HttpHeaders().set('messageID', String(this.messages.length));
-    this.http.get<ChatResponse[]>(this.backendUrl + 'get/messages', { headers }).subscribe({
+  getMessages(messageIDs: string[]) {
+    const headers = new HttpHeaders().set('messageIDs', messageIDs);
+    this.http.get<MessageDict[]>(this.backendUrl + 'get/messages', { headers }).subscribe({
       next: (response) => {
         const newMessages = response.map(message => ({
           ...message,
@@ -74,25 +73,40 @@ export class ChatComponent implements OnInit, OnDestroy {
     });
   }
 
-  // Sends a message to the server
-  sendMessage() {
-    const currentTime = new Date();
-    const payload = { text: this.newMessage, isUser: true, time: currentTime };
-
-    this.http.post<ChatResponse>(this.backendUrl + 'chat', payload).subscribe({
-      next: (response) => {
-        this.messages.push({ text: response.text, isUser: false, time: new Date(response.time) });
-      },
-      error: (error) => {
-        console.error('There was an error!', error);
+// Sends a message to the server
+postMessage() {
+  const timestamp = new Date();
+  this.http.post(this.backendUrl + 'post/message', { text: this.newMessage, isUser: true, time: Math.floor(timestamp.getTime() / 1000) }, { observe: 'response' }).subscribe({
+    next: (response) => {
+      if (response.status === 201) {
+        this.messages.push({ text: this.newMessage, isUser: true, time: timestamp });
+        this.newMessage = '';
+      } else {
+        console.error('Unexpected status code:', response.status);
       }
-    });
-    this.messages.push(payload);
-    this.newMessage = '';
-  }
+    },
+    error: (error) => {
+      console.error('There was an error!', error);
+    }
+  });
+}
+
+
 
   // Sends a request to the server to get the chat history
-  getChatHistory() {
-    this.http.get<ChatResponse[]>(this.backendUrl + 'get/messages')
-  }
+  getChatHistory(conversationID: string) {
+      const headers = new HttpHeaders().set('conversationID', conversationID);
+      this.http.get<MessageDict[]>(this.backendUrl + 'get/history', { headers }).subscribe({
+        next: (response) => {
+          const newMessages = response.map(message => ({
+            ...message,
+            time: new Date(message.time)
+          }));
+          this.messages= newMessages;
+        },
+        error: (error) => {
+          console.error('There was an error!', error);
+        }
+      });
+    }
 }
