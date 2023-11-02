@@ -21,7 +21,7 @@ export class PollingService {
   // Pollingmethod sends a request to the server to recive updates. This is repeated every x seconds.
   private startPolling(): void {
     timer(0, 5000).pipe(
-      switchMap(() => this.http.get('http://127.0.0.1:8000/api/get/polling', { observe: 'response' })),
+      switchMap(() => this.http.get('http://127.0.0.1:8080/api/get/polling', { observe: 'response' })),
       tap(response => {
         if (response.status === 200) {
           this.infoSubject.next(response.body);

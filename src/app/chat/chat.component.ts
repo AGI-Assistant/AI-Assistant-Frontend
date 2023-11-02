@@ -28,7 +28,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   // Variable initialization
-  backendUrl: string = 'http://127.0.0.1:8000/api/'
+  backendUrl: string = 'http://127.0.0.1:8080/api/'
   newMessage: string = '';
   messages: MessageDict[] = [];
   private pollingSubscription!: Subscription;
