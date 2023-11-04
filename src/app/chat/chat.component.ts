@@ -76,7 +76,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   // Sends a message to the server
   postMessage() {
     const timestamp = new Date();
-    this.http.post(this.backendUrl + 'post/message', { text: this.newMessage, isUser: true, time: Math.floor(timestamp.getTime() / 1000) }, { observe: 'response' }).subscribe({
+    this.http.post(this.backendUrl + 'post/message', { textContent: this.newMessage, isUser: true, timestamp: Math.floor(timestamp.getTime() / 1000) }, { observe: 'response' }).subscribe({
       next: (response) => {
         if (response.status === 201) {
           this.messages.push({ text: this.newMessage, isUser: true, time: timestamp });
