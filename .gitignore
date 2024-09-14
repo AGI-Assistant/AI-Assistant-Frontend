@@ -1,5 +1,5 @@
 # Projecspecific contents go here
-
+node_modules/
 
 # Local environment
 .env
