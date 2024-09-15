@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import {}
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,10 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'Assistant';
+
+  constructor(private statusService: StatusBarService) { }
+
+  toggleNavbar() {
+    this.statusService.toggleSidenav();
+  }
 }

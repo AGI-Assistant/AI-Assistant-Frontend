@@ -1,0 +1,44 @@
+// Button styling
+@mixin button-style($background, $font-color) {
+  // Make sure the buttons are easily clickable
+  min-width: 50px;
+  min-height: 50px;
+  margin: 7px;
+
+  // Color and text styling
+  font-weight: bold;
+  background-color: $background;
+  color: $font-color;
+
+  //border: none;
+  //padding: 10px 20px;
+  //border-radius: $border-radius;
+
+  // Hover effect
+  cursor: pointer;
+  &:hover {
+    background-color: lighten($background, 10%);
+  }
+}
+
+// Common flexbox centering pattern
+@mixin flex-center($direction: row) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+// Adjusts the font size based on the screen width
+@mixin responsive-font($size-mobile, $size-desktop) {
+  font-size: $size-mobile;
+
+  @media (min-width: $breakpoint-md) {
+    font-size: $size-desktop;
+  }
+}
+
+// Consistent box shadow for elements
+@mixin box-shadow($color: $color-neutral-600) {
+  box-shadow: 0px 2px 4px rgba($color, 0.1), 0px 4px 8px rgba($color, 0.1);
+}
